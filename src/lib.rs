@@ -76,7 +76,7 @@ pub fn from_value<T: serde::de::DeserializeOwned>(value: JsValue) -> Result<T> {
 
 /// Converts a Rust value into a [`JsValue`].
 pub fn to_value<T: serde::ser::Serialize + ?Sized>(value: &T) -> Result<JsValue> {
-    value.serialize(&Serializer::new().serialize_missing_as_null(true))
+    value.serialize(&Serializer::json_compatible())
 }
 
 /// Serialization and deserialization functions that pass JavaScript objects through unchanged.
